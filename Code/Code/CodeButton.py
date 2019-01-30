@@ -1,13 +1,69 @@
 from tkinter import* 
 from math import*
+from tkinter import Tk, Canvas, Frame, BOTH
+from tkinter import ttk
+import tkinter
 
+
+def info():
+    six=tkinter.Tk()
+    six.geometry('200x200+200+200')
+    text = Label(six, text="Leader:Dao \n Secretary: An \n Developer: Minh, Phuc, Long")
+    text.grid(column=10,row=10)
+
+two=tkinter.Tk()
+three=Canvas(two,height=50,width=50)
+three.pack()
+
+blue=ttk.Button(two,text="New game",command=two.destroy)
+blue.pack()
+red=ttk.Button(two,text="Group Informaton",command=info)
+red.pack()
+two.mainloop()
+
+class Example(Frame):
+   def __init__(self, parent):
+       Frame.__init__(self, parent)
+       self.parent = parent
+       self.initUI()
+  
+   def initUI(self):
+       self.parent.title("Colors")
+       self.pack(fill=BOTH, expand=1)
+  
+       canvas = Canvas(self)
+       canvas.create_rectangle(30, 10, 900, 800, outline="#00ffff", fill="#00ffff")
+       canvas.pack(fill=BOTH, expand=1)
+       green=ttk.Button(canvas,text="Quit",command=lambda:[f() for f in[caro.destroy]])
+       green.pack()
+       yellow=ttk.Button(canvas,text="2 player :)",command=reset)
+       yellow.pack()
+
+def reset():
+    board.delete("all")
+    x1.clear()
+    y1.clear()
+    x2.clear()
+    y2.clear()
+    Arrayx.clear()
+    Arrayy.clear()
+    dem=0
+    veBanCo()
+
+
+    
 caro=Tk()
 board = Canvas( caro, width = 630, height = 630,background="#f4bc42")
 board.pack(side = LEFT)
 
-for i in range(0,21):
-	board.create_line(i*30,30,i*30,600)
-	board.create_line(30,i*30,600,i*30)
+ex = Example(caro)
+
+def veBanCo():
+    for i in range(0,21):
+        board.create_line(i*30,30,i*30,600)
+        board.create_line(30,i*30,600,i*30)
+
+veBanCo()
 
 dem=0	
 stop=0
